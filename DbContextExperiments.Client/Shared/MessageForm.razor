@@ -1,0 +1,49 @@
+﻿@using DbContextExperiments.Client.Models
+@inject HttpClient Http
+
+<button class="btn btn-success" @onclick=@OpenDialog>Add</button>
+
+<Dialog @ref=@dialog class="border border-1 rounded shadow-lg p-0">
+    <DialogLayout>
+        <Header>
+            Add New Message
+        </Header>
+        <Content>
+            <EditForm Model=@inputMessage
+                      OnValidSubmit=@SaveClicked>
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value=@inputMessage.Content
+                               class="form-control"
+                               id="floatingInput"
+                               placeholder="Message Content" />
+                    <label for="floatingInput">
+                        Message Content
+                    </label>
+                </div>
+                <button class="btn btn-primary"
+                        type="submit">
+                    Save
+                </button>
+            </EditForm>
+        </Content>
+    </DialogLayout>
+</Dialog>
+
+@code {
+    private Dialog dialog;
+    private Message inputMessage = new();
+
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+
+    private async Task SaveClicked()
+    {
+        await Http.PostAsJsonAsync("api/Messages", inputMessage);
+        await dialog.CloseDialogAsync();
+        await OnClose.InvokeAsync();
+        inputMessage = new();
+    }
+
+    private async Task OpenDialog() => await dialog.ShowDialogAsync();
+}
+

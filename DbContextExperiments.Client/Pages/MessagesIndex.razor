@@ -1,0 +1,60 @@
+﻿@page "/messages"
+@using DbContextExperiments.Client.Models
+@inject HttpClient Http
+<PageTitle>Messages</PageTitle>
+<h1>Messages</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+@if (messages == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var message in messages)
+            {
+                <tr @key=@message>
+                    <td>@message.Id</td>
+                    <td>@message.Content</td>
+                    <td>@message.CreatedPointInTime.LocalDateTime.ToShortDateString()</td>
+                    <td>@message.UpdatedPointInTime.LocalDateTime.ToShortDateString()</td>
+                    <td>
+                        <button class="btn btn-outline-danger btn-sm"
+                                @onclick=@(async () => await DeleteMessage(message))>
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <MessageForm OnClose=OnDialogClosed />
+}
+
+@code {
+    private const string ApiEndpoint = "api/messages";
+    private Message[] messages;
+
+    protected override async Task OnInitializedAsync()
+        => messages = await Http.GetFromJsonAsync<Message[]>(ApiEndpoint);
+
+    private async Task OnDialogClosed()
+        => messages = await Http.GetFromJsonAsync<Message[]>(ApiEndpoint);
+
+    private async Task DeleteMessage(Message message)
+    {
+        await Http.DeleteAsync($"{ApiEndpoint}/{message.Id}");
+        messages = await Http.GetFromJsonAsync<Message[]>(ApiEndpoint);
+    }
+}

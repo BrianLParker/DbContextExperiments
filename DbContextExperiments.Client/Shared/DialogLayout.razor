@@ -1,0 +1,18 @@
+﻿<div class="d-flex flex-row justify-content-between border-bottom border-1">
+    <div class="p-1 ps-3 fw-bolder user-select-none">
+        @Header
+    </div>
+    <div class="p-1">
+        <DialogCloseButton />
+    </div>
+</div>
+<div class="p-3">
+    @Content
+</div>
+@code {
+    [Parameter]
+    public RenderFragment Header { get; set; }
+
+    [Parameter]
+    public RenderFragment Content { get; set; }
+}

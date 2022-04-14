@@ -1,5 +1,13 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+dialog::backdrop {
+    background: rgb(28,21,227);
+    background: linear-gradient(180deg, rgba(28,21,227,0.85) 0%,
+                                        rgba(28,21,227,0.85) 49%, 
+                                        rgba(241,255,0,0.85) 51%, 
+                                        rgba(241,255,0,0.85) 100%);
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -62,3 +70,4 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
