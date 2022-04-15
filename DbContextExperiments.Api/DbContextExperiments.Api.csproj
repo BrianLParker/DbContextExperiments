@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Brokers\Loggings\" />
     <Folder Include="Brokers\Storages\" />
     <Folder Include="Services\" />
   </ItemGroup>
