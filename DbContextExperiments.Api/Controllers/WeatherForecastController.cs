@@ -1,4 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using DbContextExperiments.Api.Models.Foundations.WeatherForecasts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DbContextExperiments.Api.Controllers
 {
