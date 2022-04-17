@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DbContextExperiments.Api.Models.Data.Migrations
 {
-    public partial class CreateMessageSchema : Migration
+    public partial class CreateInitialSchema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

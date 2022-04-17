@@ -1,9 +1,13 @@
-﻿using Microsoft.Extensions.Logging;
+﻿// ----------------------------------------------------
+// Copyright ©️ 2022, Brian Parker. All rights reserved.
+// ----------------------------------------------------
+
 using System;
+using Microsoft.Extensions.Logging;
 
 namespace DbContextExperiments.Api.Brokers.Loggings;
 
-public class LoggingBroker
+public class LoggingBroker : ILoggingBroker
 {
     private readonly ILogger<LoggingBroker> logger;
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DbContextExperiments.Api.Models.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220415004225_CreateMessageSchema")]
-    partial class CreateMessageSchema
+    [Migration("20220415133059_CreateInitialSchema")]
+    partial class CreateInitialSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace DbContextExperiments.Api.Models.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("DbContextExperiments.Api.Models.Foundations.Messages.Message", b =>
+            modelBuilder.Entity("Messages", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

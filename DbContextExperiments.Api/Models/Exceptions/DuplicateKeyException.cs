@@ -2,11 +2,12 @@
 // Copyright ©️ 2022, Brian Parker. All rights reserved.
 // ----------------------------------------------------
 
+
 using System;
 
-namespace DbContextExperiments.Api.Brokers.DateTimes;
+namespace DbContextExperiments.Api.Models.Exceptions;
 
-public interface IDateTimeBroker
+public class DuplicateKeyException : Exception
 {
-    DateTimeOffset GetCurrentTime();
+    public DuplicateKeyException(string message) : base(message) { }
 }

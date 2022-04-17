@@ -4,9 +4,9 @@
 
 using System;
 
-namespace DbContextExperiments.Api.Brokers.DateTimes;
+namespace DbContextExperiments.Api.Models.Exceptions;
 
-public interface IDateTimeBroker
+public class InvalidObjectNameException : Exception
 {
-    DateTimeOffset GetCurrentTime();
+    public InvalidObjectNameException(string message) : base(message) { }
 }

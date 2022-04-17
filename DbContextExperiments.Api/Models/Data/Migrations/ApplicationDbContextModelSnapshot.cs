@@ -22,7 +22,7 @@ namespace DbContextExperiments.Api.Models.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("DbContextExperiments.Api.Models.Foundations.Messages.Message", b =>
+            modelBuilder.Entity("Messages", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

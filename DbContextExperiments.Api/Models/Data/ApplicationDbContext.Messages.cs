@@ -1,4 +1,8 @@
-﻿using DbContextExperiments.Api.Models.Foundations.Messages;
+﻿// ----------------------------------------------------
+// Copyright ©️ 2022, Brian Parker. All rights reserved.
+// ----------------------------------------------------
+
+using DbContextExperiments.Api.Models.Foundations.Messages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -10,7 +14,7 @@ public partial class ApplicationDbContext : DbContext
 
     private static void OnMessageCreating(ModelBuilder modelBuilder)
     {
-        EntityTypeBuilder<Message> entityMessage = modelBuilder.Entity<Message>();
+        EntityTypeBuilder<Message> entityMessage = modelBuilder.SharedTypeEntity<Message>(nameof(Messages));
 
         entityMessage.HasKey(message => message.Id);
 

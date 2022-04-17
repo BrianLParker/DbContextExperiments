@@ -2,11 +2,8 @@
 // Copyright ©️ 2022, Brian Parker. All rights reserved.
 // ----------------------------------------------------
 
-using System;
+namespace DbContextExperiments.Api.Services.Orchestrations.Messages;
 
-namespace DbContextExperiments.Api.Brokers.DateTimes;
-
-public interface IDateTimeBroker
+public partial class MessageOrchestrationService : IMessageOrchestrationService
 {
-    DateTimeOffset GetCurrentTime();
 }

@@ -1,4 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// ----------------------------------------------------
+// Copyright ©️ 2022, Brian Parker. All rights reserved.
+// ----------------------------------------------------
+
+using Microsoft.EntityFrameworkCore;
 
 namespace DbContextExperiments.Api.Models.Data;
 
@@ -7,6 +11,7 @@ public partial class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions options)
          : base(options)
     {
+
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
