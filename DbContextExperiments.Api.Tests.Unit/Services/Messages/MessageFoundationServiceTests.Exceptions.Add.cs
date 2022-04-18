@@ -2,10 +2,12 @@
 // Copyright ©️ 2022, Brian Parker. All rights reserved.
 // ----------------------------------------------------
 
+using System.Linq;
 using System.Threading.Tasks;
 using DbContextExperiments.Api.Models.Exceptions;
 using DbContextExperiments.Api.Models.Foundations.Messages;
 using DbContextExperiments.Api.Models.Foundations.Messages.Exceptions;
+using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Xunit;
@@ -15,13 +17,9 @@ namespace DbContextExperiments.Api.Tests.Unit.Services.Messages;
 public partial class MessageFoundationServiceTests
 {
     [Fact]
-    public async Task ShouldThrowMessageFoundationDependencyExceptionOnAddIfSqlExceptionOccursAndLogItAsync()
-    {
-    }
-
-    [Fact]
     public async Task ShouldThrowMessageFoundationValidationExceptionOnAddIfMessageAlreadyExistsAndLogItAsync()
     {
+        // given
         Message someMessage = CreateRandomMessage();
         string someErrorMessage = GetRandomErrorMessage();
 
@@ -60,17 +58,14 @@ public partial class MessageFoundationServiceTests
             insertMessageTask.AsTask());
 
         this.storageContextMock.Verify(context =>
-            context.SaveChangesAsync(),
-                Times.Once);
+            context.SaveChangesAsync(), Times.Once);
 
         this.storageContextMock.Verify(context =>
-            context.Dispose(),
-                Times.Once);
+            context.Dispose(), Times.Once);
 
         this.loggingBrokerMock.Verify(broker =>
             broker.LogError(It.Is(SameExceptionAs(
-                expectedMessageFoundationServiceDependencyValidationException))),
-                    Times.Once);
+                expectedMessageFoundationServiceDependencyValidationException))), Times.Once);
 
         this.storageContextMock.Verify(context =>
             context.Add(It.IsAny<Message>()), Times.Once);
@@ -82,15 +77,5 @@ public partial class MessageFoundationServiceTests
         this.loggingBrokerMock.VerifyNoOtherCalls();
         this.storageContextMock.VerifyNoOtherCalls();
         this.storageContextFactoryMock.VerifyNoOtherCalls();
-    }
-
-    [Fact]
-    public async Task ShouldThrowMessageFoundationExceptionOnAddIfDatabaseUpdateExceptionOccursAndLogItAsync()
-    {
-    }
-
-    [Fact]
-    public async Task ShouldThrowMessageFoundationServiceExceptionOnAddIfServiceErrorOccursAndLogItAsync()
-    {
     }
 }
