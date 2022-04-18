@@ -7,16 +7,15 @@ public partial class StorageContext<T> : IStorageContext<T>
 {
     private readonly DbContext dbContext;
     private readonly DbSet<T> dbSet;
+
     internal StorageContext(DbContext dbContext)
         : this(dbContext, dbContext.Set<T>())
-    {
+    { }
 
-    }
     internal StorageContext(DbContext dbContext, string dbSetName)
         : this(dbContext, dbContext.Set<T>(dbSetName))
-    {
+    { }
 
-    }
     private StorageContext(DbContext dbContext, DbSet<T> dbSet)
     {
         this.dbContext = dbContext;
