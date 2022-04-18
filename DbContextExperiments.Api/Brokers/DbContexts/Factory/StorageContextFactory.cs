@@ -1,4 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿// ----------------------------------------------------
+// Copyright ©️ 2022, Brian Parker. All rights reserved.
+// ----------------------------------------------------
+
+using Microsoft.EntityFrameworkCore;
 
 namespace DbContextExperiments.Api.Brokers.DbContexts.Factory;
 

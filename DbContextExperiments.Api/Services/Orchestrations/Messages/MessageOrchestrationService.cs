@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ----------------------------------------------------
+// Copyright ©️ 2022, Brian Parker. All rights reserved.
+// ----------------------------------------------------
+
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using DbContextExperiments.Api.Brokers.Loggings;

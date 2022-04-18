@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbContextExperiments.Api", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbContextExperiments.Client", "DbContextExperiments.Client\DbContextExperiments.Client.csproj", "{E9DC126E-08CC-49E8-83BC-AD490FAD42D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbContextExperiments.Api.Tests.Unit", "DbContextExperiments.Api.Tests.Unit\DbContextExperiments.Api.Tests.Unit.csproj", "{08FE485C-3117-44D5-8365-043716A0A1AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbContextExperiments.Api.Tests.Unit", "DbContextExperiments.Api.Tests.Unit\DbContextExperiments.Api.Tests.Unit.csproj", "{08FE485C-3117-44D5-8365-043716A0A1AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
